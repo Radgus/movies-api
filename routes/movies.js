@@ -27,6 +27,7 @@ function moviesApi(app) {
       next(error);
     }
   });
+
   router.get("/:movieId", validationHandler({ movieId: movieIdSchema}, 'params'), async function(req, res, next) {
     const {movieId} = req.params;
     try {
@@ -39,6 +40,7 @@ function moviesApi(app) {
       next(error);
     }
   });
+
   router.post("/", validationHandler(createMovieSchema), async function(req, res, next) {
     const { body: movie } = req;
     try {
@@ -51,6 +53,7 @@ function moviesApi(app) {
       next(error);
     }
   });
+
   router.put("/:movieId", validationHandler({ movieId: movieIdSchema}, 'params'), validationHandler(updateMovieSchema), async function(req, res, next) {
     const { body: movie } = req;
     const { movieId } = req.params;
@@ -64,6 +67,7 @@ function moviesApi(app) {
       next(error);
     }
   });
+  
   router.delete("/:movieId", validationHandler({ movieId: movieIdSchema}, 'params'), async function(req, res, next) {
     const { movieId } = req.params;
     try {
